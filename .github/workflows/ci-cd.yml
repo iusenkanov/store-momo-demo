@@ -37,10 +37,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v3
-        with:
-          version: 'v1.0.1'  # или свою версию
+      - name: Install kubectl
+        run: |
+          curl -LO https://dl.k8s.io/release/v1.28.2/bin/linux/amd64/kubectl
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/
+          kubectl version --client
 
       - name: Configure kubeconfig
         run: |
