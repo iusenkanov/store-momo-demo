@@ -1,10 +1,14 @@
-FROM node:18
+FROM node:18-alpine AS build
 
 WORKDIR /app
-
 COPY package*.json ./
 RUN npm install
-
 COPY . .
+RUN npm run build
 
-CMD ["sh", "-c", "NODE_ENV=production VUE_APP_API_URL=http://localhost:8081 npm run serve"]
+FROM node:18-alpine
+WORKDIR /app
+RUN npm install -g serve
+COPY --from=build /app/dist /app/dist
+EXPOSE 8080
+CMD ["serve", "-s", "dist", "-l", "8080"]
