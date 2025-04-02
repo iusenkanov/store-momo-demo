@@ -1,0 +1,30 @@
+name: Build and Push to GHCR
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  IMAGE_FRONTEND: ghcr.io/${{ secrets.GHCR_USERNAME }}/vue-app
+  IMAGE_BACKEND: ghcr.io/${{ secrets.GHCR_USERNAME }}/go-api
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to GHCR
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GHCR_USERNAME }}" --password-stdin
+
+      - name: Build and Push Frontend
+        run: |
+          docker build -t $IMAGE_FRONTEND:latest ./frontend
+          docker push $IMAGE_FRONTEND:latest
+
+      - name: Build and Push Backend
+        run: |
+          docker build -t $IMAGE_BACKEND:latest ./backend
+          docker push $IMAGE_BACKEND:latest
