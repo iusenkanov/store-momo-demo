@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/${{ secrets.GHCR_USERNAME }}/vue-app:latest
+          image: ghcr.io/iusenkanov/vue-app:latest
           ports:
             - containerPort: 80
 ---

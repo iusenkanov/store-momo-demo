@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ghcr.io/${{ secrets.GHCR_USERNAME }}/go-api:latest
+          image: ghcr.io/iusenkanov/go-api:latest
           ports:
             - containerPort: 8080
 ---
