@@ -14,7 +14,8 @@ spec:
       labels:
         app: frontend
     spec:
-
+      imagePullSecrets:
+        - name: ghcr-login
       containers:
         - name: frontend
           image: ghcr.io/iusenkanov/vue-app:latest
