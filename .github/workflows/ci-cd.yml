@@ -40,7 +40,7 @@ jobs:
       - name: Set up kubectl
         uses: azure/setup-kubectl@v3
         with:
-          version: 'v1.0.0'  # или свою версию
+          version: 'v1.0.1'  # или свою версию
 
       - name: Configure kubeconfig
         run: |
