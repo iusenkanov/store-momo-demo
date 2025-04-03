@@ -19,6 +19,8 @@ spec:
       containers:
         - name: nginx
           image: ghcr.io/iusenkanov/vue-app:latest
+          command: ["/bin/sh", "-c"]
+          args: ["sleep 5 && nginx -g 'daemon off;'"]
           ports:
             - containerPort: 80
               hostPort: 80
