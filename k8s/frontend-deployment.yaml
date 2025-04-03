@@ -22,6 +22,7 @@ spec:
           ports:
             - containerPort: 80
             - containerPort: 8081
+              hostPort: 8081
           command: ["/bin/sh", "-c"]
           args: ["nginx -g 'daemon off;'"]
 ---
