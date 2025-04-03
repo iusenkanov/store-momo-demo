@@ -19,11 +19,13 @@ spec:
       containers:
         - name: nginx
           image: ghcr.io/iusenkanov/vue-app:latest
-          command: ["/bin/sh", "-c"]
-          args: ["nginx -g 'daemon off;'"]
           ports:
             - containerPort: 80
               hostPort: 80
+            - containerPort: 8081
+              hostPort: 8081
+          command: ["/bin/sh", "-c"]
+          args: ["nginx -g 'daemon off;'"]
 ---
 apiVersion: v1
 kind: Service
