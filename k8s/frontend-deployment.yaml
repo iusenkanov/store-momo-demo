@@ -16,10 +16,6 @@ spec:
     spec:
       imagePullSecrets:
         - name: ghcr-login
-      initContainers:
-        - name: wait-backend
-          image: busybox
-          command: ['sh', '-c', 'until nslookup backend; do echo waiting for backend; sleep 2; done']
       containers:
         - name: nginx
           image: ghcr.io/iusenkanov/vue-app:latest
