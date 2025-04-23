@@ -51,5 +51,5 @@ jobs:
 
       - name: Apply Kubernetes Manifests
         run: |
-          kubectl apply -f k8s/backend-deployment.yaml
-          kubectl apply -f k8s/frontend-deployment.yaml
+          kubectl apply -f k8s/backend/backend-deployment.yaml
+          kubectl apply -f k8s/frontend/frontend-deployment.yaml
