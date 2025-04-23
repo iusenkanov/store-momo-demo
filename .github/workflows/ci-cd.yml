@@ -21,15 +21,13 @@ jobs:
 
       - name: Build and Push Frontend
         run: |
-          IMAGE=ghcr.io/${{ secrets.GHCR_USERNAME }}/vue-app
-          docker build -t $IMAGE:latest ./frontend
-          docker push $IMAGE:latest
+          docker build -t $IMAGE_FRONTEND:latest ./frontend
+          docker push $IMAGE_FRONTEND:latest
 
       - name: Build and Push Backend
         run: |
-          IMAGE=ghcr.io/${{ secrets.GHCR_USERNAME }}/vue-app
-          docker build -t $IMAGE:latest ./backend
-          docker push $IMAGE:latest
+          docker build -t $IMAGE_BACKEND:latest ./backend
+          docker push $IMAGE_BACKEND:latest
           
   deploy:
     runs-on: ubuntu-latest
